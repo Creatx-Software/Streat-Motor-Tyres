@@ -2,7 +2,7 @@ import React from 'react';
 export function BrandLogos() {
   const brands = ['GOODYEAR', 'MICHELIN', 'PIRELLI', 'HANKOOK'];
   return (
-    <section className="bg-[#1a1a2e] py-8">
+    <section className="bg-[#191919] py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
           {brands.map((brand) =>

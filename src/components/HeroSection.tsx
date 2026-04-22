@@ -57,10 +57,10 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="bg-[#0f0f23] text-white py-4">
+      <div className="bg-[#191919] text-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm sm:text-base">
-            <span className="text-purple-400">●</span> Over 70 different tyre
+            <span className="text-[#8B16CC]">●</span> Over 70 different tyre
             sizes available, in budget, semi budget and premium range.
           </p>
         </div>

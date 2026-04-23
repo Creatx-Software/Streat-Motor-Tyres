@@ -16,7 +16,7 @@ export function Navbar() {
             
           </div>
 
-          <div className="hidden md:flex flex-1 items-center justify-start space-x-12">
+          <div className="hidden lg:flex flex-1 items-center justify-start space-x-12">
             <a
               href="#services"
               className="hover:text-yellow-400 transition-colors font-semibold">
@@ -43,7 +43,7 @@ export function Navbar() {
             </a>
           </div>
 
-          <div className="hidden md:block ml-auto">
+          <div className="hidden lg:block ml-auto">
             <a
               href="tel:07960902731"
               className="bg-[#FFD10F] text-[#1C1C1E] px-6 py-3 rounded-lg font-bold hover:bg-yellow-500 transition-colors">
@@ -52,7 +52,7 @@ export function Navbar() {
             </a>
           </div>
 
-          <div className="md:hidden">
+          <div className="lg:hidden ml-auto">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-white p-2"
@@ -65,7 +65,7 @@ export function Navbar() {
       </div>
 
       {mobileMenuOpen &&
-      <div className="md:hidden bg-[#1a1a2e] border-t border-gray-700">
+      <div className="lg:hidden bg-[#1a1a2e] border-t border-gray-700">
           <div className="px-4 pt-2 pb-4 space-y-3">
             <a href="#services" className="block py-2 hover:text-yellow-400">
               SERVICES

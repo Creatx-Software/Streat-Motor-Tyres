@@ -1,15 +1,28 @@
 import React from 'react';
 export function BrandLogos() {
-  const brands = ['GOODYEAR', 'MICHELIN', 'PIRELLI', 'HANKOOK'];
+  const brandLogos = [
+    { src: '/assets/Brand1.png', alt: 'Brand logo 1' },
+    { src: '/assets/Brand2.png', alt: 'Brand logo 2' },
+    { src: '/assets/Brand3.png', alt: 'Brand logo 3' },
+    { src: '/assets/Brand4.png', alt: 'Brand logo 4' },
+    { src: '/assets/Brand5.png', alt: 'Brand logo 5' },
+    { src: '/assets/Brand6.png', alt: 'Brand logo 6' }
+  ];
+
+  const marqueeItems = [...brandLogos, ...brandLogos, ...brandLogos];
+
   return (
-    <section className="bg-[#191919] py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-          {brands.map((brand) =>
-          <div key={brand} className="text-center">
-              <h3 className="text-white text-xl sm:text-2xl font-bold tracking-wider">
-                {brand}
-              </h3>
+    <section className="bg-[#191919] py-16 sm:py-8">
+      <div className="brand-marquee overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+        <div className="brand-marquee-track flex items-center gap-14 sm:gap-32 w-max">
+          {marqueeItems.map((logo, index) =>
+          <div key={`${logo.src}-${index}`} className="flex h-12 sm:h-16 lg:h-36 w-[140px] sm:w-[170px] lg:w-[190px] items-center justify-center shrink-0">
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                className="max-h-full max-w-full object-contain opacity-100"
+                loading="eager"
+              />
             </div>
           )}
         </div>

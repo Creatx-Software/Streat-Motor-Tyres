@@ -12,7 +12,7 @@ export function BrandLogos() {
   const marqueeItems = [...brandLogos, ...brandLogos, ...brandLogos];
 
   return (
-    <section className="bg-[#191919] py-16 sm:py-8">
+    <section className="bg-[#191919] -mt-px py-10 sm:py-8">
       <div className="brand-marquee overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
         <div className="brand-marquee-track flex items-center gap-14 sm:gap-32 w-max">
           {marqueeItems.map((logo, index) =>

@@ -88,7 +88,7 @@ export function BookingForm() {
     });
   };
   return (
-    <section className="relative pb-48 px-4 bg-[url('/assets/FormBg.png')] bg-cover bg-center bg-no-repeat">
+    <section className="relative -mt-px pb-48 px-4 bg-[url('/assets/FormBg.png')] bg-cover bg-center bg-no-repeat">
       <div className="max-w-3xl mx-auto">
         <div className="bg-white rounded-2xl shadow-2xl p-10 sm:p-12 lg:p-16 translate-y-16">
           <h2 className="text-xl sm:text-2xl font-inter font-semibold text-center mb-2 text-[#8B16CC]">

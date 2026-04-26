@@ -1,0 +1,59 @@
+name: Deploy to tekhub.creatxsoftware.com
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-tekhub
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Deploy on server
+        run: |
+          ssh -i ~/.ssh/deploy_key \
+              -p ${{ secrets.SSH_PORT }} \
+              -o StrictHostKeyChecking=no \
+              ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+              "bash -s" << 'EOF'
+          set -e
+          cd ${{ secrets.DEPLOY_PATH }}
+
+          echo "==> Pulling latest code"
+          git fetch --all
+          git reset --hard origin/master
+
+          echo "==> Installing dependencies"
+          npm ci
+
+          echo "==> Building Next.js app"
+          npm run build
+
+          echo "==> Restarting PM2 process"
+          pm2 restart ${{ secrets.PM2_APP_NAME }} --update-env
+          pm2 save
+
+          echo "==> Deployment complete"
+          EOF
+
+      - name: Cleanup
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

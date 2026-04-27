@@ -1,6 +1,10 @@
+"use client";
+
 import React from 'react';
-import { ClockIcon, MapPinIcon, ZapIcon } from 'lucide-react';
+import { ClockIcon, MapPinIcon, ZapIcon, Circle } from 'lucide-react';
 export function MobileService() {
+  const [activeIndex, setActiveIndex] = React.useState(0);
+
   const benefits = [
   {
     icon: ClockIcon,
@@ -20,55 +24,50 @@ export function MobileService() {
   }];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-[#F8EAFB]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+            <h3 className="text-md font-inter font-semibold text-[#C69BDD] tracking-wide">
+                <Circle size={16} fill="#8B16CC" stroke="#8B16CC" className="inline-block mr-2 align-middle" />
+                Why Choose Us
+              </h3>
+            <h2 className="text-3xl sm:text-4xl font-inter font-semibold text-[#2D2D2D] max-w-sm">
               Your Tyre Problem Fixed Right Where You Are
             </h2>
-            <p className="text-lg text-gray-700">
-              No need to visit a garage or wait in line. Our fully equipped
-              mobile units bring professional tyre services directly to your
-              location, saving you time and hassle.
+            <p className="text-lg text-[#6E6E6E] font-inter font-regular">
+              Whether it’s midnight on a lonely road, motorway or midday in a bustling car park, we come to you home, work, the shops, or wherever life finds you.
             </p>
-            <p className="text-gray-600">
-              Whether you&apos;re stuck on the roadside, at home, or at your
-              workplace, our expert technicians arrive with everything needed to
-              get you moving again quickly and safely.
-            </p>
-            <div className="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-500">
-              <p className="text-gray-800 font-medium">
-                ⚡ Average response time: Under 60 minutes within the M25
-              </p>
-            </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-0 sm:grid-cols-3">
             {benefits.map((benefit, index) => {
               const Icon = benefit.icon;
+              const isActive = activeIndex === index;
+
               return (
-                <div
+                <button
+                  type="button"
                   key={index}
-                  className="bg-gradient-to-br from-purple-600 to-purple-800 p-6 rounded-xl text-white space-y-3 hover:shadow-2xl transition-shadow">
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onFocus={() => setActiveIndex(index)}
+                  onClick={() => setActiveIndex(index)}
+                  className={`group relative min-h-[220px] space-y-4 rounded-xl p-8 text-left transition-all duration-300 sm:min-h-[240px] ${
+                    isActive
+                      ? 'z-20 bg-[#1F0030] text-white scale-[1.06] shadow-[0_16px_35px_rgba(31,0,48,0.28)]'
+                      : 'z-0 bg-white text-[#2D2D2D] scale-100 shadow-sm hover:shadow-md'
+                  }`}>
                   
-                  <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center">
-                    <Icon size={24} />
+                  <div className={`flex h-14 w-14 items-center justify-center rounded-lg transition-colors duration-300 ${isActive ? 'bg-white/20' : 'bg-[#F3E6FA]'}`}>
+                    <Icon size={28} className="text-[#FFB235]" />
                   </div>
-                  <h3 className="text-lg font-bold">{benefit.title}</h3>
-                  <p className="text-purple-100 text-sm">
+                  <h3 className={`text-lg font-bold ${isActive ? 'text-white' : 'text-[#2D2D2D]'}`}>{benefit.title}</h3>
+                  <p className={`text-sm ${isActive ? 'text-purple-100' : 'text-[#6E6E6E]'}`}>
                     {benefit.description}
                   </p>
-                </div>);
+                </button>);
 
             })}
-            <div className="sm:col-span-2 relative h-48 rounded-xl overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1632823469770-73735e4aaaf6?w=800&q=80"
-                alt="Mobile Service"
-                className="w-full h-full object-cover" />
-              
-            </div>
           </div>
         </div>
       </div>

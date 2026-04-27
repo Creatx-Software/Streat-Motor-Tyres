@@ -1,32 +1,32 @@
 "use client";
 
 import React from 'react';
-import { ClockIcon, MapPinIcon, ZapIcon, Circle } from 'lucide-react';
+import { Check, Circle } from 'lucide-react';
 export function MobileService() {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   const benefits = [
   {
-    icon: ClockIcon,
-    title: '24/7 Service Available',
+    icon: Check,
+    title: '60 Min Response',
     description:
-    'Round-the-clock emergency tyre service whenever you need us'
+    'We understand the stress of being stranded. that is why we move quickly, so you can feel safe and supported'
   },
   {
-    icon: MapPinIcon,
-    title: 'On-Site Convenience',
-    description: 'We come to you - at home, work, or roadside'
+    icon: Check,
+    title: 'Fully Insured',
+    description: 'Complete insurance coverage and qualified technicians give you total peace of mind.'
   },
   {
-    icon: ZapIcon,
-    title: 'Quick Turnaround',
-    description: 'Fast, efficient service to get you back on the road'
+    icon: Check,
+    title: 'Our Commitment',
+    description: 'Day or Night, Near or Far.You are Never Left Stuck and Marooned'
   }];
 
   return (
-    <section className="py-16 bg-[#F8EAFB]">
+    <section id="why-us" className="py-28 bg-[#F8EAFB]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid items-center gap-10 lg:gap-0 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="space-y-6">
             <h3 className="text-md font-inter font-semibold text-[#C69BDD] tracking-wide">
                 <Circle size={16} fill="#8B16CC" stroke="#8B16CC" className="inline-block mr-2 align-middle" />
@@ -35,7 +35,7 @@ export function MobileService() {
             <h2 className="text-3xl sm:text-4xl font-inter font-semibold text-[#2D2D2D] max-w-sm">
               Your Tyre Problem Fixed Right Where You Are
             </h2>
-            <p className="text-lg text-[#6E6E6E] font-inter font-regular">
+            <p className="text-sm text-[#6E6E6E] font-inter font-regular max-w-sm">
               Whether it’s midnight on a lonely road, motorway or midday in a bustling car park, we come to you home, work, the shops, or wherever life finds you.
             </p>
           </div>
@@ -52,17 +52,17 @@ export function MobileService() {
                   onMouseEnter={() => setActiveIndex(index)}
                   onFocus={() => setActiveIndex(index)}
                   onClick={() => setActiveIndex(index)}
-                  className={`group relative min-h-[220px] space-y-4 rounded-xl p-8 text-left transition-all duration-300 sm:min-h-[240px] ${
+                  className={`group relative min-h-[220px] space-y-4 rounded-3xl p-8 text-left transition-all duration-300 sm:min-h-[240px] ${
                     isActive
-                      ? 'z-20 bg-[#1F0030] text-white scale-[1.06] shadow-[0_16px_35px_rgba(31,0,48,0.28)]'
+                      ? 'z-20 bg-[#1F0030] text-white scale-[1.08] shadow-[0_16px_35px_rgba(31,0,48,0.28)]'
                       : 'z-0 bg-white text-[#2D2D2D] scale-100 shadow-sm hover:shadow-md'
                   }`}>
                   
-                  <div className={`flex h-14 w-14 items-center justify-center rounded-lg transition-colors duration-300 ${isActive ? 'bg-white/20' : 'bg-[#F3E6FA]'}`}>
-                    <Icon size={28} className="text-[#FFB235]" />
+                  <div className={`flex h-14 w-14 items-center justify-center rounded-lg transition-colors duration-300 bg-transparent`}>
+                    <Icon size={40} className="text-[#FFB235]" />
                   </div>
-                  <h3 className={`text-lg font-bold ${isActive ? 'text-white' : 'text-[#2D2D2D]'}`}>{benefit.title}</h3>
-                  <p className={`text-sm ${isActive ? 'text-purple-100' : 'text-[#6E6E6E]'}`}>
+                  <h3 className={`text-lg font-inter font-semibold ${isActive ? 'text-white' : 'text-[#2D2D2D]'}`}>{benefit.title}</h3>
+                  <p className={`text-sm font-inter font-regular ${isActive ? 'text-purple-100' : 'text-[#6E6E6E]'}`}>
                     {benefit.description}
                   </p>
                 </button>);

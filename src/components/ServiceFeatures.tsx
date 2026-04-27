@@ -63,7 +63,7 @@ export function ServiceFeatures() {
   }, []);
 
   return (
-    <section id="tyre-guide" className="bg-white overflow-hidden">
+    <section id="services" className="bg-white overflow-hidden">
       <div className="relative mx-auto min-h-[600px] lg:min-h-[800px]">
         {/* Background Image */}
         <div className="absolute inset-0 hidden h-full w-full lg:block">

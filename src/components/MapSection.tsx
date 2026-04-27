@@ -1,25 +1,28 @@
 import React from 'react';
+import { Circle } from 'lucide-react';
 export function MapSection() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+        <div className="text-left mb-8">
+          <h3 className="text-md font-inter font-semibold text-[#AEAEAE] tracking-wide mb-4">
+            <Circle size={16} fill="#8B16CC" stroke="#8B16CC" className="inline-block mr-2 align-middle" />
+            Workshop location
+          </h3>
+          <h2 className="text-3xl sm:text-4xl font-inter font-semibold text-white">
             Find Us On Maps
           </h2>
-          <p className="text-gray-600 mt-2">Serving all areas within the M25</p>
         </div>
 
-        <div className="relative h-96 lg:h-[500px] rounded-xl overflow-hidden shadow-2xl">
-          <img
-            src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&q=80"
-            alt="Service Area Map"
-            className="w-full h-full object-cover" />
-          
-          <div className="absolute inset-0 bg-purple-900/10"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-6 py-3 rounded-full shadow-lg">
-            <p className="font-bold text-purple-900">📍 M25 Coverage Area</p>
-          </div>
+        <div className="relative h-96 overflow-hidden rounded-xl shadow-2xl lg:h-[500px]">
+          <iframe
+            title="Streat Motor Location"
+            src="https://www.google.com/maps?q=Streat+Motor+2+Linkfield+Cor,+Redhill+RH1+1BB&output=embed"
+            className="h-full w-full"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
         </div>
       </div>
     </section>);

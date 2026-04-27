@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
+import { MinusIcon, PlusIcon, Circle } from 'lucide-react';
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const faqs = [
@@ -27,68 +27,76 @@ export function FAQ() {
   }];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
+    <section id="faq" className="bg-gradient-to-b from-[#A800FF] to-[#000000] py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2 space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">
-              Frequently Asked Questions
+          <div className="lg:col-span-2">
+            <h3 className="text-md font-inter font-semibold text-white tracking-wide mb-6">
+              <Circle size={16} fill="white" stroke="white" className="inline-block mr-2 align-middle" />
+              Common Queries
+            </h3>
+            <h2 className="text-3xl sm:text-4xl font-inter font-semibold text-white mb-8">
+              Frequently Asked <br />Questions
             </h2>
 
             {faqs.map((faq, index) =>
             <div
               key={index}
-              className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden border border-white/20">
+              className="bg-transparent overflow-hidden border-y border-[#AEAEAE]">
               
                 <button
                 onClick={() =>
                 setOpenIndex(openIndex === index ? null : index)
                 }
-                className="w-full px-6 py-4 flex justify-between items-center text-left hover:bg-white/5 transition-colors">
+                className="w-full px-6 py-6 flex justify-between items-center text-left transition-colors">
                 
-                  <span className="text-white font-semibold text-lg pr-4">
+                  <span className="text-white font-inter font-semibold text-lg pr-4">
                     {faq.question}
                   </span>
                   {openIndex === index ?
-                <ChevronUpIcon
-                  className="text-yellow-400 flex-shrink-0"
+                <MinusIcon
+                  className="text-white flex-shrink-0"
                   size={24} /> :
 
 
-                <ChevronDownIcon
-                  className="text-yellow-400 flex-shrink-0"
+                <PlusIcon
+                  className="text-white flex-shrink-0"
                   size={24} />
 
                 }
                 </button>
                 {openIndex === index &&
-              <div className="px-6 pb-4 text-purple-100">{faq.answer}</div>
+              <div className="px-6 pb-4 text-white font-inter font-regular">{faq.answer}</div>
               }
               </div>
             )}
+
+            <div className="mt-6 px-5 py-4 text-[#FFD10F] font-inter font-regular">
+              <p className="font-inter text-sm leading-relaxed sm:text-base">
+                <span className="mr-2">💡</span>
+                NHS, Police, Fire brigade staff get 10% discount on production of a valid ID.
+              </p>
+            </div>
           </div>
 
+          {/* Contact Us Card */}
           <div className="lg:col-span-1">
-            <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl p-8 text-center space-y-6 sticky top-24">
-              <h3 className="text-2xl font-bold text-gray-900">
-                Still Have Questions?
-              </h3>
-              <p className="text-gray-800">
-                Our team is ready to help you with any queries you may have.
-              </p>
-              <button className="bg-purple-900 text-white px-8 py-4 rounded-full font-bold hover:bg-purple-800 transition-colors w-full">
-                CONTACT US
-              </button>
-              <div className="pt-4 border-t border-orange-600">
-                <p className="text-sm text-gray-800 mb-2">
-                  Or call us directly:
-                </p>
-                <a
-                  href="tel:07960902731"
-                  className="text-2xl font-bold text-purple-900">
-                  
-                  07960 902731
-                </a>
+            <div className="sticky top-24">
+              <div className="relative min-h-[400px] overflow-hidden rounded-xl">
+                <img
+                  src="/assets/faq.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-100"
+                />
+                <div className="relative z-10 flex h-full min-h-[400px] flex-col p-8 text-left">
+                  <h3 className="text-2xl font-inter font-semibold text-white">
+                    Still Have <br />Questions?
+                  </h3>
+                  <button className="absolute bottom-0 right-0 rounded-md bg-[#FEC42D] px-10 py-4 font-inter font-medium text-[#2D2D2D] transition-colors hover:scale-105">
+                    CONTACT US
+                  </button>
+                </div>
               </div>
             </div>
           </div>

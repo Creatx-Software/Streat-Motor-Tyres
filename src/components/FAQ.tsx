@@ -1,29 +1,61 @@
 "use client";
 
 import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { MinusIcon, PlusIcon, Circle } from 'lucide-react';
+
+const sectionVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: 'easeOut'
+    }
+  }
+};
+
+const listVariants: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.08
+    }
+  }
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut'
+    }
+  }
+};
+
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const faqs = [
   {
-    question: 'Do you supply all types of tyres?',
+    question: 'Do you replace all types of tyres?',
     answer:
-    'Yes, we stock a comprehensive range of tyres from budget to premium brands including Michelin, Pirelli, Goodyear, and Hankook. We have over 70 different tyre sizes available to fit most vehicles.'
+    'Yes, we service all car, SUV, and light commercial vehicle tyres. Our team will confirm fitment before dispatch.'
   },
   {
-    question: 'Can I book an appointment online?',
+    question: 'How much does a tyre replacement cost?',
     answer:
-    'Absolutely! You can book through our online form, call us directly, or message us on WhatsApp. We offer flexible scheduling to suit your convenience, including same-day emergency services.'
+    'Tyres starting from low as £50 depending on the brand plus call out charges based on location and time of day.'
   },
   {
-    question: 'How long does a tyre fitting take?',
+    question: 'What services do you offer on-site?',
     answer:
-    'A standard tyre fitting typically takes 30-45 minutes per tyre. For emergency roadside assistance, we aim to have you back on the road within an hour of arrival.'
-  },
-  {
-    question: 'Are there any hidden charges?',
-    answer:
-    'No hidden charges whatsoever. We provide transparent pricing upfront, including the tyre cost, fitting, balancing, and disposal of old tyres. What we quote is what you pay.'
+    'Our mobile service offers all types of puncture repair, wheel balancing and tyre replacement. Our Redhill workshop offer a one-stop solution from tyres, MOT, Service and Repairs, Wheel alignment, Bodyshop plus many more'
   }];
 
   return (
@@ -31,57 +63,101 @@ export function FAQ() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2">
-            <h3 className="text-md font-inter font-semibold text-white tracking-wide mb-6">
+            <motion.h3
+              className="text-md font-inter font-semibold text-white tracking-wide mb-6"
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.25 }}
+            >
               <Circle size={16} fill="white" stroke="white" className="inline-block mr-2 align-middle" />
               Common Queries
-            </h3>
-            <h2 className="text-3xl sm:text-4xl font-inter font-semibold text-white mb-8">
+            </motion.h3>
+            <motion.h2
+              className="text-3xl sm:text-4xl font-inter font-semibold text-white mb-8"
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.06 }}
+            >
               Frequently Asked <br />Questions
-            </h2>
+            </motion.h2>
 
-            {faqs.map((faq, index) =>
-            <div
-              key={index}
-              className="bg-transparent overflow-hidden border-y border-[#AEAEAE]">
-              
+            <motion.div
+              variants={listVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {faqs.map((faq, index) =>
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="bg-transparent overflow-hidden border-y border-[#AEAEAE]"
+              >
                 <button
-                onClick={() =>
-                setOpenIndex(openIndex === index ? null : index)
-                }
-                className="w-full px-6 py-6 flex justify-between items-center text-left transition-colors">
-                
+                  onClick={() =>
+                  setOpenIndex(openIndex === index ? null : index)
+                  }
+                  className="w-full px-6 py-6 flex justify-between items-center text-left transition-colors"
+                >
                   <span className="text-white font-inter font-semibold text-lg pr-4">
                     {faq.question}
                   </span>
-                  {openIndex === index ?
-                <MinusIcon
-                  className="text-white flex-shrink-0"
-                  size={24} /> :
+                  <motion.span
+                    animate={{ rotate: openIndex === index ? 180 : 0 }}
+                    transition={{ duration: 0.25, ease: 'easeOut' }}
+                    className="text-white flex-shrink-0"
+                  >
+                    {openIndex === index ?
+                    <MinusIcon size={24} /> :
+                    <PlusIcon size={24} />
 
-
-                <PlusIcon
-                  className="text-white flex-shrink-0"
-                  size={24} />
-
-                }
+                    }
+                  </motion.span>
                 </button>
-                {openIndex === index &&
-              <div className="px-6 pb-4 text-white font-inter font-regular">{faq.answer}</div>
-              }
-              </div>
-            )}
+                <AnimatePresence initial={false}>
+                  {openIndex === index &&
+                  <motion.div
+                    key="content"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.35, ease: 'easeInOut' }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-4 text-white font-inter font-regular">{faq.answer}</div>
+                  </motion.div>
+                  }
+                </AnimatePresence>
+              </motion.div>
+              )}
+            </motion.div>
 
-            <div className="mt-6 px-5 py-4 text-[#FFD10F] font-inter font-regular">
+            <motion.div
+              className="mt-6 px-5 py-4 text-[#FFD10F] font-inter font-regular"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
+            >
               <p className="font-inter text-sm leading-relaxed sm:text-base">
                 <span className="mr-2">💡</span>
                 NHS, Police, Fire brigade staff get 10% discount on production of a valid ID.
               </p>
-            </div>
+            </motion.div>
           </div>
 
           {/* Contact Us Card */}
           <div className="lg:col-span-1">
-            <div className="sticky top-24">
+            <motion.div
+              className="sticky top-24"
+              initial={{ opacity: 0, x: 36 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+            >
               <div className="relative min-h-[400px] overflow-hidden rounded-xl">
                 <img
                   src="/assets/faq.png"
@@ -98,7 +174,7 @@ export function FAQ() {
                   </button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

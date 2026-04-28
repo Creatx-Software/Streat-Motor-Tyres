@@ -27,12 +27,18 @@ export function ServiceArea() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid gap-32 lg:grid-cols-[1fr_2fr] lg:items-stretch">
-          <div className="relative">
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: -48 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
             <img
               src="/assets/Map.png"
               alt="M25 Service Area Map"
               className="h-auto w-full object-cover 2xl:scale-[1.4]" />
-          </div>
+          </motion.div>
 
           <div className="space-y-6">
             <motion.img

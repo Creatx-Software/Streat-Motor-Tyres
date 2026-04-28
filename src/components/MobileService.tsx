@@ -2,6 +2,34 @@
 
 import React from 'react';
 import { Check, Circle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
+
+const leftContentVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease: 'easeOut',
+      staggerChildren: 0.12
+    }
+  }
+};
+
+const leftItemVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: 'easeOut'
+    }
+  }
+};
+
 export function MobileService() {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
@@ -27,18 +55,25 @@ export function MobileService() {
     <section id="why-us" className="py-28 bg-[#F8EAFB]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:gap-0 lg:grid-cols-[0.85fr_1.15fr]">
-          <div className="space-y-6">
-            <h3 className="text-md font-inter font-semibold text-[#C69BDD] tracking-wide">
+          { /* Left Content */ }
+          <motion.div
+            className="space-y-6"
+            variants={leftContentVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
+          >
+            <motion.h3 variants={leftItemVariants} className="text-md font-inter font-semibold text-[#C69BDD] tracking-wide">
                 <Circle size={16} fill="#8B16CC" stroke="#8B16CC" className="inline-block mr-2 align-middle" />
                 Why Choose Us
-              </h3>
-            <h2 className="text-3xl sm:text-4xl font-inter font-semibold text-[#2D2D2D] max-w-sm">
+              </motion.h3>
+            <motion.h2 variants={leftItemVariants} className="text-3xl sm:text-4xl font-inter font-semibold text-[#2D2D2D] max-w-sm">
               Your Tyre Problem Fixed Right Where You Are
-            </h2>
-            <p className="text-sm text-[#6E6E6E] font-inter font-regular max-w-sm">
+            </motion.h2>
+            <motion.p variants={leftItemVariants} className="text-sm text-[#6E6E6E] font-inter font-regular max-w-sm">
               Whether it’s midnight on a lonely road, motorway or midday in a bustling car park, we come to you home, work, the shops, or wherever life finds you.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           <div className="grid grid-cols-1 gap-0 sm:grid-cols-3">
             {benefits.map((benefit, index) => {

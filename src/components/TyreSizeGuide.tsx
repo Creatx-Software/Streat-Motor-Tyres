@@ -38,7 +38,7 @@ export function TyreSizeGuide() {
             variants={sectionVariants}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.35 }}
+            viewport={{ once: true, amount: 0.55 }}
           >
             <motion.h3 variants={itemVariants} className="text-md font-inter font-semibold text-[#AEAEAE] tracking-wide">
               <Circle size={16} fill="#8B16CC" stroke="#8B16CC" className="inline-block mr-2" />

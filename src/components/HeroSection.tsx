@@ -54,8 +54,9 @@ export function HeroSection() {
       <div className="absolute inset-0" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div className="grid lg:grid-cols-[1.1fr_0.8fr] gap-8 lg:gap-0 items-center">
+          { /* Left Content */ }
           <motion.div
-            className="text-left space-y-6"
+            className="text-center lg:text-left space-y-6"
             variants={heroContentVariants}
             initial="hidden"
             whileInView="show"
@@ -80,7 +81,7 @@ export function HeroSection() {
               </p>
             </motion.div>
 
-            <motion.div variants={heroItemVariants} className="flex flex-col sm:flex-row gap-4 pt-4 translate-y-8">
+            <motion.div variants={heroItemVariants} className="flex flex-col sm:flex-row gap-4 pt-4 translate-y-8 justify-center lg:justify-start">
               <button className="bg-[#8B16CC] text-white px-8 py-3 rounded-md font-inter font-semibold text-lg hover:bg-purple-800 transition-colors shadow-lg">
                 Get Instant Help
               </button>
@@ -117,9 +118,9 @@ export function HeroSection() {
 
       <motion.div
         className="bg-[#191919] text-white py-4"
-        initial={{ opacity: 0, y: 18 }}
+        initial={false}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.85 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.55, ease: 'easeOut' }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

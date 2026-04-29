@@ -51,7 +51,7 @@ export default function GalleryPage() {
     <main className="bg-white">
       <Navbar />
       {/* Header Section */}
-      <section className="relative py-20 lg:py-20">
+      <section className="relative py-20 lg:py-20 -mt-28">
         <div className="absolute inset-0">
           <img
             src="/assets/HeroBg.png"
@@ -70,7 +70,7 @@ export default function GalleryPage() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-              className="text-lg sm:text-xl font-inter font-regular mb-2"
+              className="text-lg sm:text-xl font-inter font-regular mb-2 mt-8"
             >
               <Link href="/" className="text-[#8B16CC] hover:text-purple-700 transition-colors">
                 Home
@@ -111,12 +111,6 @@ export default function GalleryPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-6">
                   <div>
-                    <h3 className="text-white font-inter font-semibold">
-                      Service #{index + 1}
-                    </h3>
-                    <p className="text-[#FFE889] text-sm font-inter font-regular">
-                      Professional Tyre Service
-                    </p>
                   </div>
                 </div>
               </motion.div>

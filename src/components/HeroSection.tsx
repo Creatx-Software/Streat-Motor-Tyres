@@ -49,7 +49,7 @@ const heroImageVariants: Variants = {
 export function HeroSection() {
   return (
     <section
-      className="relative overflow-hidden bg-[#191919] bg-cover bg-center"
+      className="relative overflow-hidden bg-[#191919] bg-cover bg-center -mt-28 pt-28"
       style={{ backgroundImage: "url('/assets/HeroBg.png')" }}>
       <div className="absolute inset-0" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
@@ -62,42 +62,50 @@ export function HeroSection() {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
           >
-            <motion.div className="inline-block" variants={heroItemVariants}>
-              <span className="bg-[#FBB038]/20 backdrop-blur-sm text-[#FFE889] px-6 py-2 rounded-full text-sm font-inter font-semibold border border-[#FBB038]/60">
-                Professional Tyre Repair
-              </span>
-            </motion.div>
+            <div className="relative -top-4 sm:-top-5 lg:-top-6 inline-block">
+              <motion.div className="inline-block" variants={heroItemVariants}>
+                <span className="bg-[#FBB038]/20 backdrop-blur-sm text-[#FFE889] px-10 py-2 rounded-full text-sm font-inter font-semibold border-2 border-[#FBB038]/60">
+                  Professional Tyre Repair
+                </span>
+              </motion.div>
+            </div>
 
-            <motion.h1 variants={heroItemVariants} className="w-full max-w-none text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-inter font-bold text-[#FDCF12] leading-[1.65] tracking-[0.1em] translate-y-4">
+            <motion.h1 variants={heroItemVariants} className="w-full lg:max-w-xl text-4xl lg:text-[3.8rem] xl:text-[4rem] font-inter font-bold text-[#FDCF12] leading-[1.2] tracking-[0.01em] translate-y-20 px-10 lg:px-0">
               Marooned on a side of a road, at Home or Work?
             </motion.h1>
 
-            <motion.div variants={heroItemVariants} className="space-y-2 translate-y-6">
-              <p className="text-xl sm:text-2xl text-[#AEAEAE] font-inter font-semibold">
-                24/7 Emergency Tyre Repair Service.
-              </p>
-              <p className="text-lg sm:text-2xl font-inter font-semibold text-[#AEAEAE]">
-                We Come To You Within 1 hour
-              </p>
-            </motion.div>
+            <div className="relative top-2 sm:top-3 lg:top-4 inline-block">
+              <motion.div variants={heroItemVariants} className="space-y-2">
+                <p className="text-xl sm:text-2xl text-[#AEAEAE] font-inter font-semibold">
+                  24/7 Emergency Tyre Repair Service.
+                </p>
+                <p className="text-lg sm:text-2xl font-inter font-semibold text-[#AEAEAE]">
+                  We Come To You Within 1 hour
+                </p>
+              </motion.div>
+            </div>
 
-            <motion.div variants={heroItemVariants} className="flex flex-col sm:flex-row gap-4 pt-4 translate-y-8 justify-center lg:justify-start">
-              <button className="bg-[#8B16CC] text-white px-8 py-3 rounded-md font-inter font-semibold text-lg hover:bg-purple-800 transition-colors shadow-lg">
-                Get Instant Help
-              </button>
-              <a
-                href=""
-                className="bg-[#FFD10F] text-black px-8 py-3 rounded-md font-inter font-semibold text-lg hover:bg-yellow-500 transition-colors shadow-lg flex items-center justify-center gap-2">
+            <div className="relative top-2 sm:top-3 lg:top-4 inline-block">
+              <motion.div variants={heroItemVariants} className="flex flex-col sm:flex-row gap-4 pt-4 translate-y-8 justify-center lg:justify-start">
+                <button className="bg-[#8B16CC] text-white px-8 py-3 rounded-md font-inter font-semibold text-lg hover:bg-purple-800 transition-colors shadow-lg">
+                  Get Instant Help
+                </button>
+                <a
+                  href=""
+                  className="bg-[#FFD10F] text-black px-8 py-3 rounded-md font-inter font-semibold text-lg hover:bg-yellow-500 transition-colors shadow-lg flex items-center justify-center gap-2">
                 
-                <PhoneIcon size={20} />
-                07960 902731
-              </a>
-            </motion.div>
+                  <PhoneIcon size={20} />
+                  07960 902731
+                </a>
+              </motion.div>
+            </div>
 
-            <motion.p variants={heroItemVariants} className="text-md font-inter font-regular text-[#FBB038] flex items-center gap-2 pt-2 translate-y-10">
-              <span className="text-[#FBB038]">💡</span>
-              The legal minimum tread depth is 1.6mm
+            <div className="relative top-2 sm:top-3 lg:top-4 inline-block">
+              <motion.p variants={heroItemVariants} className="text-md font-inter font-regular text-[#FFD10F] flex items-center gap-2 pt-2 translate-y-10">
+                <span className="text-[#FFD10F]">💡</span>
+                The legal minimum tread depth is 1.6mm
             </motion.p>
+            </div>
           </motion.div>
 
           <motion.div

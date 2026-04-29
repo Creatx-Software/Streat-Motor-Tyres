@@ -18,14 +18,13 @@ const textVariants: Variants = {
 
 export function ServiceArea() {
   return (
-    <section
-      className="py-32 bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage:
-          "url('/assets/MapBg.png')",
-      }}
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-32 bg-no-repeat">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 z-0"
+        style={{ backgroundImage: "url('/assets/MapBg.png')" }}
+        aria-hidden="true"
+      />
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid gap-32 lg:grid-cols-[1fr_2fr] lg:items-stretch">
           <motion.div
             className="relative"
@@ -67,7 +66,7 @@ export function ServiceArea() {
               whileInView="show"
               viewport={{ once: true, amount: 0.45 }}
               transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-              className="text-xl text-[#2D2D2D] font-inter font-regular"
+              className="text-2xl text-[#2D2D2D] font-inter font-regular"
             >
               Including:  outer counties of
               <br />Surrey, Kent, Sussex, and Essex

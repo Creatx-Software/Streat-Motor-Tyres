@@ -20,7 +20,7 @@ const leftCardVariants: Variants = {
   hidden: { opacity: 0, x: -42 },
   show: (isLg: boolean) => ({
     opacity: 1,
-    x: isLg ? 60 : 0,
+    x: isLg ? 98 : 0,
     transition: { duration: 0.75, ease: 'easeOut' }
   })
 };
@@ -38,7 +38,7 @@ const rightCardVariants: Variants = {
   hidden: { opacity: 0, x: 64 },
   show: (isLg: boolean) => ({
     opacity: 1,
-    x: isLg ? -60 : 0,
+    x: isLg ? -96 : 0,
     y: isLg ? -28 : 0,
     transition: { duration: 0.75, ease: 'easeOut' }
   })
@@ -77,7 +77,7 @@ export function ServiceFeatures() {
         {/* Text Content and Cards Overlay */}
         <div className="relative z-10 px-4 sm:px-6 lg:px-0 py-16 lg:py-0">
           <div className="container mx-auto">
-            <div className="flex flex-col justify-center space-y-6 lg:max-w-xl lg:ml-32 -translate-y-10 lg:translate-y-16">
+            <div className="flex flex-col justify-center space-y-6 lg:max-w-xl lg:ml-40 -translate-y-10 lg:translate-y-16">
               <h3 className="text-md font-inter font-semibold text-[#AEAEAE] tracking-wide">
                 <Circle size={16} fill="#8B16CC" stroke="#8B16CC" className="inline-block mr-2 align-middle" />
                 What We Do
@@ -101,68 +101,65 @@ export function ServiceFeatures() {
               </div>
 
               <motion.div
-                className="relative mx-auto z-10 mt-[-2rem] grid grid-cols-1 justify-items-center gap-0 md:mt-[0rem] md:items-end lg:mt-[0rem] lg:grid-cols-3 lg:justify-items-stretch overflow-x-hidden pt-8"
+                className="relative mx-auto z-10 mt-[-2rem] grid grid-cols-1 justify-items-center gap-0 md:mt-[0rem] md:items-end lg:mt-[0rem] lg:grid-cols-3 lg:justify-items-stretch overflow-hidden pt-8"
                 variants={cardVariants}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.22 }}
               >
-              <motion.article custom={isLg} variants={leftCardVariants} className="group mx-auto w-full max-w-[27rem]">
-                <div className="relative overflow-hidden rounded-xl min-h-[180px]">
-                  <img
-                    src="/assets/Repair.png"
-                    alt="Tyre Puncture Repair"
-                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
-                  />
-                  
-                  <div className="absolute inset-x-0 bottom-0 p-16">
-                    <h3 className="text-lg font-inter font-semibold text-white">
-                      Tyre Puncture Repair
-                    </h3>
-                    <p className="mt-4 text-sm leading-5 text-white font-inter font-regular">
-                      Professional on-site puncture repairs that get you back on the road quickly.
-                    </p>
+                <motion.article custom={isLg} variants={leftCardVariants} className="group relative z-10 hover:z-20 mx-auto w-full max-w-[27rem]">
+                  <div className="relative overflow-hidden rounded-xl min-h-[200px] transform-gpu transition-transform duration-500 origin-center group-hover:scale-[1.02]">
+                    <img
+                      src="/assets/Repair.png"
+                      alt="Tyre Puncture Repair"
+                      className="h-full w-full object-contain"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 p-16">
+                      <h3 className="text-lg font-inter font-semibold text-white">
+                        Tyre Puncture Repair
+                      </h3>
+                      <p className="mt-4 text-sm leading-5 text-white font-inter font-regular">
+                        Professional on-site puncture repairs that get you back on the road quickly.
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </motion.article>
+                </motion.article>
 
-              <motion.article variants={bottomCardVariants} className="group mx-auto w-full max-w-[27rem]">
-                <div className="relative overflow-hidden rounded-xl min-h-[180px]">
-                  <img
-                    src="/assets/Balancing.png"
-                    alt="Wheel Balancing"
-                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
-                  />
-                  
-                  <div className="absolute inset-x-0 bottom-0 p-16">
-                    <h3 className="text-lg font-inter font-semibold text-white">
-                      Wheel Balancing
-                    </h3>
-                    <p className="mt-4 text-sm leading-5 text-white font-inter font-regular">
-                      Professional wheel balancing service to ensure smooth driving and extended tyre life.
-                    </p>
+                <motion.article variants={bottomCardVariants} className="group relative z-10 hover:z-20 mx-auto w-full max-w-[27rem]">
+                  <div className="relative overflow-hidden rounded-xl min-h-[200px] transform-gpu transition-transform duration-500 origin-center group-hover:scale-[1.02]">
+                    <img
+                      src="/assets/Balancing.png"
+                      alt="Wheel Balancing"
+                      className="h-full w-full object-contain"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 p-16">
+                      <h3 className="text-lg font-inter font-semibold text-white">
+                        Wheel Balancing
+                      </h3>
+                      <p className="mt-4 text-sm leading-5 text-white font-inter font-regular">
+                        Professional wheel balancing service to ensure smooth driving and extended tyre life.
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </motion.article>
+                </motion.article>
 
-              <motion.article custom={isLg} variants={rightCardVariants} className="group relative z-10 mx-auto w-full max-w-[25rem] hover:z-20">
-                <div className="relative overflow-hidden rounded-xl min-h-[240px]">
-                  <img
-                    src="/assets/Replacement.png"
-                    alt="Tyre Replacement"
-                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
-                  />
-                  
-                  <div className="absolute inset-x-0 bottom-0 p-10">
-                    <h3 className="text-lg font-inter font-semibold text-white">
-                      Tyre Replacement
-                    </h3>
-                    <p className="mt-4 text-sm leading-5 text-white font-inter font-regular">
-                      Full tyre replacement service with our mobile workshop. Quality tyres, installed Professionally.
-                    </p>
+                <motion.article custom={isLg} variants={rightCardVariants} className="group relative z-10 hover:z-20 mx-auto w-full max-w-[25rem]">
+                  <div className="relative overflow-hidden rounded-xl min-h-[300px] transform-gpu transition-transform duration-500 origin-center group-hover:scale-[1.02]">
+                    <img
+                      src="/assets/Replacement.png"
+                      alt="Tyre Replacement"
+                      className="h-full w-full object-contain"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 p-10">
+                      <h3 className="text-lg font-inter font-semibold text-white">
+                        Tyre Replacement
+                      </h3>
+                      <p className="mt-4 text-sm leading-5 text-white font-inter font-regular">
+                        Full tyre replacement service with our mobile workshop. Quality tyres, installed Professionally.
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </motion.article>
+                </motion.article>
               </motion.div>
             </div>
           </div>

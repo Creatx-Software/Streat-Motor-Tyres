@@ -1,19 +1,35 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MenuIcon, XIcon } from 'lucide-react';
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
-    <nav className="sticky top-0 z-50 bg-[#000000] text-white">
+    <nav className={`sticky top-0 z-50 text-white transition-all duration-300 ${
+      isScrolled ? 'bg-[#000000]' : 'bg-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center h-20 gap-16">
+        <div className="flex items-center h-28 gap-16">
           <div className="flex-shrink-0">
             <img
               src="/Logo.png"
               alt="Streat Motor Tyres"
-              className="h-12 w-auto" />
+              className="h-16 w-auto lg:scale-[1.1]" />
             
           </div>
 

@@ -85,3 +85,14 @@ a {
   will-change: transform;
   backface-visibility: hidden;
 }
+
+/* Force remove rounded corners from lightbox images */
+.lightbox-image {
+  border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}

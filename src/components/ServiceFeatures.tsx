@@ -75,7 +75,7 @@ export function ServiceFeatures() {
         </div>
 
         {/* Text Content and Cards Overlay */}
-        <div className="relative z-10 px-4 sm:px-6 lg:px-0 py-16 lg:py-0">
+        <div className="relative z-10 px-4 sm:px-6 lg:px-0 py-0 mt-32 md:mt-0">
           <div className="container mx-auto">
             <div className="flex flex-col justify-center space-y-6 lg:max-w-xl lg:ml-40 -translate-y-10 lg:translate-y-16">
               <h3 className="text-md font-inter font-semibold text-[#AEAEAE] tracking-wide">
@@ -101,7 +101,7 @@ export function ServiceFeatures() {
               </div>
 
               <motion.div
-                className="relative mx-auto z-10 mt-[-2rem] grid grid-cols-1 justify-items-center gap-0 md:mt-[0rem] md:items-end lg:mt-[0rem] lg:grid-cols-3 lg:justify-items-stretch overflow-hidden pt-8"
+                className="relative mx-auto z-10 mt-[-2rem] grid grid-cols-1 justify-items-center gap-0 md:mt-[0rem] md:items-end lg:mt-[0rem] lg:grid-cols-3 lg:justify-items-stretch overflow-hidden pt-8 pb-8"
                 variants={cardVariants}
                 initial="hidden"
                 whileInView="show"

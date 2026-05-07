@@ -51,7 +51,8 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-7 lg:items-end">
+          { /* Social Media Links */ }
+          <div className="flex flex-col gap-7 items-end">
             <div className="flex items-center gap-3">
               {socialLinks.map((item) => {
                 const Icon = item.icon;
@@ -67,6 +68,11 @@ export function Footer() {
                 );
               })}
             </div>
+            <img
+              src="/logo-2.png.bv.webp"
+              alt="Logo"
+              className="h-12 w-auto -translate-y-4 scale-[0.9] md:scale-[1]"
+            />
           </div>
         </div>
 

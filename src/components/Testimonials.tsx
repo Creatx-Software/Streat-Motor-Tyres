@@ -122,7 +122,7 @@ export function Testimonials() {
       id="reviews"
       className="bg-[#F8EAFB] py-0">
 
-      <div className="overflow-hidden rounded-t-[7rem] bg-[#FBB038] py-28">
+      <div className="overflow-hidden rounded-t-[4rem] md:rounded-t-[7rem] bg-[#FBB038] py-12 md:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h3 className="text-md font-inter font-semibold text-white tracking-wide mb-4">

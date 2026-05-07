@@ -52,7 +52,7 @@ export function MobileService() {
   }];
 
   return (
-    <section id="why-us" className="py-28 bg-[#F8EAFB]">
+    <section id="why-us" className="py-10 md:py-28 bg-[#F8EAFB]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:gap-0 lg:grid-cols-[0.85fr_1.15fr]">
           { /* Left Content */ }
@@ -89,7 +89,7 @@ export function MobileService() {
                   onClick={() => setActiveIndex(index)}
                   className={`group relative min-h-[220px] space-y-4 rounded-3xl p-8 text-left transition-all duration-300 sm:min-h-[240px] ${
                     isActive
-                      ? 'z-20 bg-[#1F0030] text-white scale-[1.08] shadow-[0_16px_35px_rgba(31,0,48,0.28)]'
+                      ? 'z-20 bg-[#1F0030] text-white scale-[1.04] md:scale-[1.08] shadow-[0_16px_35px_rgba(31,0,48,0.28)]'
                       : 'z-0 bg-white text-[#2D2D2D] scale-100 shadow-sm hover:shadow-md'
                   }`}>
                   

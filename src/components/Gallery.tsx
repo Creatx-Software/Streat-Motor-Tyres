@@ -42,7 +42,7 @@ export function Gallery() {
 
   return (
     <section id="gallery" className="bg-[#FBB038] py-0">
-      <div className="overflow-hidden rounded-t-[7rem] bg-white py-16">
+      <div className="overflow-hidden rounded-t-[4rem] md:rounded-t-[7rem] bg-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <motion.div

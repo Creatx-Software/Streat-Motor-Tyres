@@ -95,7 +95,7 @@ export function BookingForm() {
             ⚡ Get Help Now - It Takes 2 Minutes
           </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-6 mt-10">
+          <form onSubmit={handleSubmit} className="space-y-10 md:space-y-6 mt-10">
             <div>
               <label className="block text-sm font-inter font-medium text-[#1C1C1E] mb-3">
                 Your Name *

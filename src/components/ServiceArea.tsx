@@ -18,14 +18,14 @@ const textVariants: Variants = {
 
 export function ServiceArea() {
   return (
-    <section className="relative py-32 bg-no-repeat">
+    <section className="relative py-16 md:py-32 bg-no-repeat">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 z-0"
         style={{ backgroundImage: "url('/assets/MapBg.png')" }}
         aria-hidden="true"
       />
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-32 lg:grid-cols-[1fr_2fr] lg:items-stretch">
+        <div className="grid gap-10 md:gap-32 lg:grid-cols-[1fr_2fr] lg:items-stretch">
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: -48 }}

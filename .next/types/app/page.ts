@@ -1,4 +1,4 @@
-// File: D:\Strat Tyre\app\page.tsx
+// File: /Users/kavinduhettiarachchi/Documents/GitHub/Streat-Motor-Tyres/app/page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

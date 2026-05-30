@@ -21,7 +21,7 @@ export function ServiceArea() {
     <section className="relative py-16 md:py-32 bg-no-repeat">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 z-0"
-        style={{ backgroundImage: "url('/assets/MapBg.png')" }}
+        style={{ backgroundImage: "url('/assets/MapBg.webp')" }}
         aria-hidden="true"
       />
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,14 +34,14 @@ export function ServiceArea() {
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
             <img
-              src="/assets/Map.png"
+              src="/assets/Map.webp"
               alt="M25 Service Area Map"
               className="h-auto w-full object-cover 2xl:scale-[1.4]" />
           </motion.div>
 
           <div className="space-y-6">
             <motion.img
-              src="/assets/M25.png"
+              src="/assets/M25.webp"
               alt="M25"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}

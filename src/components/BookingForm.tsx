@@ -72,10 +72,48 @@ export function BookingForm() {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Booking request submitted! We will contact you shortly.');
+
+    try {
+      const response = await fetch('/api/send-enquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          current_location: formData.location,
+          tyre_size: formData.tyreSize,
+          whats_wrong: formData.whatIsWrong,
+          vehicle_details: formData.vehicleDetails,
+          phone_number: formData.phoneNumber,
+          email: formData.email,
+          urgency_level: formData.urgencyLevel,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send enquiry');
+      }
+
+      alert('Booking request submitted! We will contact you shortly. Check your email for confirmation.');
+
+      // Reset form
+      setFormData({
+        name: '',
+        location: '',
+        tyreSize: '',
+        whatIsWrong: '',
+        vehicleDetails: '',
+        phoneNumber: '',
+        email: '',
+        urgencyLevel: ''
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Sorry, there was an error submitting your request. Please try again or call us directly.');
+    }
   };
   const handleChange = (
   e: React.ChangeEvent<
@@ -88,7 +126,7 @@ export function BookingForm() {
     });
   };
   return (
-    <section className="relative -mt-px pb-48 px-4 bg-[url('/assets/FormBg.png')] bg-cover bg-center bg-no-repeat">
+    <section className="relative -mt-px pb-48 px-4 bg-[url('/assets/FormBg.webp')] bg-cover bg-center bg-no-repeat">
       <div className="mx-auto w-full md:w-[48rem]">
         <div className="w-full bg-white rounded-2xl shadow-2xl p-8 sm:p-10 lg:p-12 translate-y-16">
           <h2 className="text-xl sm:text-2xl font-inter font-semibold text-center mb-2 text-[#8B16CC]">

@@ -160,7 +160,7 @@ export function FAQ() {
             >
               <div className="relative min-h-[400px] overflow-hidden rounded-xl">
                 <img
-                  src="/assets/faq.png"
+                  src="/assets/faq.webp"
                   alt=""
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-100"

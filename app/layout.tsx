@@ -5,6 +5,9 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Streat Motor Tyres Website',
   description: 'Streat Motor Tyres Website',
+  icons: {
+    icon: '/Logo-23851.svg',
+  },
 };
 
 export default function RootLayout({

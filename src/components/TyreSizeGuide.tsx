@@ -66,7 +66,7 @@ export function TyreSizeGuide() {
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.12 }}
           >
             <img
-              src="/assets/Tyre Diagram.png"
+              src="/assets/Tyre Diagram.webp"
               alt="Tyre Size Markings"
               className="w-full h-auto" />
           </motion.div>

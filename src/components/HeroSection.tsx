@@ -50,7 +50,7 @@ export function HeroSection() {
   return (
     <section
       className="relative overflow-hidden bg-[#191919] bg-cover bg-center -mt-28 pt-28"
-      style={{ backgroundImage: "url('/assets/HeroBg.png')" }}>
+      style={{ backgroundImage: "url('/assets/HeroBg.webp')" }}>
       <div className="absolute inset-0" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div className="grid lg:grid-cols-[1.1fr_0.8fr] gap-8 lg:gap-0 items-center">
@@ -118,7 +118,7 @@ export function HeroSection() {
             viewport={{ once: true, amount: 0.35 }}
           >
             <img
-              src="/assets/HeroVehicle.png"
+              src="/assets/HeroVehicle.webp"
               alt="Emergency Tyre Service Van"
               className="w-full h-auto scale-[1.1] lg:scale-[1.5]" />
             

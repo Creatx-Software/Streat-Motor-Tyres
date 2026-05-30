@@ -34,11 +34,11 @@ export function Gallery() {
   const [zoomLevel, setZoomLevel] = React.useState(1);
   
   const images = [
-  '/assets/gallery1.png',
-  '/assets/gallery2.png',
-  '/assets/gallery3.png',
-  '/assets/gallery4.png',
-  '/assets/gallery5.png'];
+  '/assets/gallery1.webp',
+  '/assets/gallery2.webp',
+  '/assets/gallery3.webp',
+  '/assets/gallery4.webp',
+  '/assets/gallery5.webp'];
 
   return (
     <section id="gallery" className="bg-[#FBB038] py-0">

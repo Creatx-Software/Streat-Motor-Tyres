@@ -7,16 +7,16 @@ import Link from 'next/link';
 import { Navbar } from '../../src/components/Navbar';
 
 const galleryImages = [
-  '/assets/gallery1.png',
-  '/assets/gallery2.png',
-  '/assets/gallery3.png',
-  '/assets/gallery4.png',
-  '/assets/gallery5.png',
-  '/assets/gallery1.png',
-  '/assets/gallery2.png',
-  '/assets/gallery3.png',
-  '/assets/gallery4.png',
-  '/assets/gallery5.png',
+  '/assets/gallery1.webp',
+  '/assets/gallery2.webp',
+  '/assets/gallery3.webp',
+  '/assets/gallery4.webp',
+  '/assets/gallery5.webp',
+  '/assets/gallery1.webp',
+  '/assets/gallery2.webp',
+  '/assets/gallery3.webp',
+  '/assets/gallery4.webp',
+  '/assets/gallery5.webp',
 ];
 
 const imageVariants: Variants = {
@@ -54,7 +54,7 @@ export default function GalleryPage() {
       <section className="relative py-20 lg:py-20 -mt-28">
         <div className="absolute inset-0">
           <img
-            src="/assets/HeroBg.png"
+            src="/assets/HeroBg.webp"
             alt="Hero background"
             className="h-full w-full object-cover"
           />

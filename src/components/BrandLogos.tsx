@@ -1,12 +1,12 @@
 import React from 'react';
 export function BrandLogos() {
   const brandLogos = [
-    { src: '/assets/Brand1.png', alt: 'Brand logo 1' },
-    { src: '/assets/Brand2.png', alt: 'Brand logo 2' },
-    { src: '/assets/Brand3.png', alt: 'Brand logo 3' },
-    { src: '/assets/Brand4.png', alt: 'Brand logo 4' },
-    { src: '/assets/Brand5.png', alt: 'Brand logo 5' },
-    { src: '/assets/Brand6.png', alt: 'Brand logo 6' }
+    { src: '/assets/Brand1.webp', alt: 'Brand logo 1' },
+    { src: '/assets/Brand2.webp', alt: 'Brand logo 2' },
+    { src: '/assets/Brand3.webp', alt: 'Brand logo 3' },
+    { src: '/assets/Brand4.webp', alt: 'Brand logo 4' },
+    { src: '/assets/Brand5.webp', alt: 'Brand logo 5' },
+    { src: '/assets/Brand6.webp', alt: 'Brand logo 6' }
   ];
 
   const marqueeItems = [...brandLogos, ...brandLogos, ...brandLogos];

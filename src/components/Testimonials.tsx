@@ -169,7 +169,7 @@ export function Testimonials() {
                 </div>
               </div>
               <img
-                src="/assets/review.png"
+                src="/assets/review.webp"
                 alt=""
                 aria-hidden="true"
                 className="pointer-events-none absolute bottom-6 right-4 w-12 select-none object-contain sm:w-16"

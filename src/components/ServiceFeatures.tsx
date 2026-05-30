@@ -68,7 +68,7 @@ export function ServiceFeatures() {
         {/* Background Image */}
         <div className="absolute inset-0 hidden h-full w-full lg:block">
           <img
-            src="/assets/ServiceBg.png"
+            src="/assets/ServiceBg.webp"
             alt="Service background"
             className="block h-full w-full object-contain object-right"
           />
@@ -94,7 +94,7 @@ export function ServiceFeatures() {
             <div className="relative">
               <div className="absolute inset-y-0 -left-4 -right-4 sm:-left-6 sm:-right-6 lg:hidden">
                 <img
-                  src="/assets/ServiceBg.png"
+                  src="/assets/ServiceBg.webp"
                   alt="Service cards background"
                   className="h-full w-full object-cover object-center"
                 />
@@ -110,7 +110,7 @@ export function ServiceFeatures() {
                 <motion.article custom={isLg} variants={leftCardVariants} className="group relative z-10 hover:z-20 mx-auto w-full max-w-[27rem]">
                   <div className="relative overflow-hidden rounded-xl min-h-[200px] transform-gpu transition-transform duration-500 origin-center group-hover:scale-[1.02]">
                     <img
-                      src="/assets/Repair.png"
+                      src="/assets/Repair.webp"
                       alt="Tyre Puncture Repair"
                       className="h-full w-full object-contain"
                     />
@@ -128,7 +128,7 @@ export function ServiceFeatures() {
                 <motion.article variants={bottomCardVariants} className="group relative z-10 hover:z-20 mx-auto w-full max-w-[27rem]">
                   <div className="relative overflow-hidden rounded-xl min-h-[200px] transform-gpu transition-transform duration-500 origin-center group-hover:scale-[1.02]">
                     <img
-                      src="/assets/Balancing.png"
+                      src="/assets/Balancing.webp"
                       alt="Wheel Balancing"
                       className="h-full w-full object-contain"
                     />
@@ -146,7 +146,7 @@ export function ServiceFeatures() {
                 <motion.article custom={isLg} variants={rightCardVariants} className="group relative z-10 hover:z-20 mx-auto w-full max-w-[25rem]">
                   <div className="relative overflow-hidden rounded-xl min-h-[300px] transform-gpu transition-transform duration-500 origin-center group-hover:scale-[1.02]">
                     <img
-                      src="/assets/Replacement.png"
+                      src="/assets/Replacement.webp"
                       alt="Tyre Replacement"
                       className="h-full w-full object-contain"
                     />

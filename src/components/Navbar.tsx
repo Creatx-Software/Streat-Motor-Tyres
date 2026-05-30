@@ -27,7 +27,7 @@ export function Navbar() {
         <div className="flex items-center h-28 gap-16">
           <div className="flex-shrink-0">
             <img
-              src="/Logo.png"
+              src="/Logo-23851.svg"
               alt="Streat Motor Tyres"
               className="h-16 w-auto lg:scale-[1.1]" />
             

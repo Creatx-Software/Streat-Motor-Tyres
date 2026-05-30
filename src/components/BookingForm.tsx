@@ -196,11 +196,12 @@ export function BookingForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-inter font-medium text-[#1C1C1E] mb-3">
-                What’s wrong *
+              <label htmlFor="whatIsWrong" className="block text-sm font-inter font-medium text-[#1C1C1E] mb-3">
+                What's wrong *
               </label>
               <div className="relative">
                 <select
+                  id="whatIsWrong"
                   name="whatIsWrong"
                   required
                   value={formData.whatIsWrong}
@@ -270,11 +271,12 @@ export function BookingForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-inter font-medium text-[#1C1C1E] mb-3">
+              <label htmlFor="urgencyLevel" className="block text-sm font-inter font-medium text-[#1C1C1C1E] mb-3">
                 Urgency Level *
               </label>
               <div className="relative">
                 <select
+                  id="urgencyLevel"
                   name="urgencyLevel"
                   required
                   value={formData.urgencyLevel}

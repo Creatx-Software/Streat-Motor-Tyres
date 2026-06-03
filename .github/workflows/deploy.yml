@@ -67,7 +67,7 @@ jobs:
           echo "==> Installing production dependencies"
           npm ci
           echo "==> Restarting Passenger app"
-          cloudlinux-selector restart --interpreter nodejs --app-root dev.streatmotortyres.co.uk
+          cloudlinux-selector restart --json --interpreter nodejs --app-root dev.streatmotortyres.co.uk
           echo "==> Deployment complete"
           EOF
 

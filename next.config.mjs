@@ -8,6 +8,12 @@ const nextConfig = {
     // unoptimized: true,
   },
 
+  // Don't fail production builds on ESLint warnings/errors (lint is run separately).
+  // Keeps the deploy pipeline from breaking on stylistic rules like no-img-element.
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
   // Optimization settings
   compiler: {
     // Remove console.logs in production

@@ -1,4 +1,4 @@
-name: Deploy to tekhub.creatxsoftware.com
+name: Deploy to dev.streatmotortyres.co.uk
 
 on:
   push:
@@ -7,18 +7,30 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: deploy-tekhub
+  group: deploy-smt-dev
   cancel-in-progress: false
 
 jobs:
   deploy:
-    name: Build & Deploy
+    name: Build & Deploy (cPanel / Passenger)
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js app
+        run: npm run build
 
       - name: Configure SSH
         run: |
@@ -27,7 +39,22 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
 
-      - name: Deploy on server
+      - name: Rsync build to server
+        run: |
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no" \
+            --exclude '.git' \
+            --exclude 'node_modules' \
+            --exclude '.next/cache' \
+            --exclude '.env' \
+            --exclude 'tmp/' \
+            --exclude '.htaccess' \
+            --exclude 'stderr.log' \
+            --exclude '.well-known' \
+            --exclude 'cgi-bin' \
+            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
+
+      - name: Install prod deps & restart Passenger
         run: |
           ssh -i ~/.ssh/deploy_key \
               -p ${{ secrets.SSH_PORT }} \
@@ -35,22 +62,12 @@ jobs:
               ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
               "bash -s" << 'EOF'
           set -e
-          cd ${{ secrets.DEPLOY_PATH }}
-
-          echo "==> Pulling latest code"
-          git fetch --all
-          git reset --hard origin/master
-
-          echo "==> Installing dependencies"
+          source ~/nodevenv/dev.streatmotortyres.co.uk/20/bin/activate
+          cd "${{ secrets.DEPLOY_PATH }}"
+          echo "==> Installing production dependencies"
           npm ci
-
-          echo "==> Building Next.js app"
-          npm run build
-
-          echo "==> Restarting PM2 process"
-          pm2 restart ${{ secrets.PM2_APP_NAME }} --update-env
-          pm2 save
-
+          echo "==> Restarting Passenger app"
+          cloudlinux-selector restart --interpreter nodejs --app-root dev.streatmotortyres.co.uk
           echo "==> Deployment complete"
           EOF
 

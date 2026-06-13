@@ -41,8 +41,8 @@ export function Gallery() {
   '/assets/gallery5.webp'];
 
   return (
-    <section id="gallery" className="bg-[#FBB038] py-0">
-      <div className="overflow-hidden rounded-t-[4rem] md:rounded-t-[7rem] bg-white py-16">
+    <section id="gallery" className="bg-[#FBB038] pb-16 md:pb-24">
+      <div className="overflow-hidden rounded-t-[4rem] md:rounded-t-[7rem] bg-white py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <motion.div

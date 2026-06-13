@@ -51,7 +51,7 @@ export function MapSection() {
           </motion.h2>
         </motion.div>
 
-        <div className="relative h-96 overflow-hidden rounded-xl shadow-2xl lg:h-[500px]">
+        <div className="relative h-96 overflow-hidden rounded-xl shadow-2xl lg:h-[350px]">
           <iframe
             title="Streat Motor Location"
             src="https://www.google.com/maps?q=Streat+Motor+2+Linkfield+Cor,+Redhill+RH1+1BB&output=embed"

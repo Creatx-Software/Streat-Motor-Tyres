@@ -152,24 +152,24 @@ export function FAQ() {
           {/* Contact Us Card */}
           <div className="lg:col-span-1">
             <motion.div
-              className="sticky top-24"
+              className="sticky top-24 h-full"
               initial={{ opacity: 0, x: 36 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.7, ease: 'easeOut' }}
             >
-              <div className="relative min-h-[400px] overflow-hidden rounded-xl">
+              <div className="relative h-full overflow-hidden rounded-xl">
                 <img
                   src="/assets/faq.webp"
                   alt=""
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-100"
                 />
-                <div className="relative z-10 flex h-full min-h-[400px] flex-col p-8 text-left">
+                <div className="relative z-10 flex h-full flex-col p-8 text-left">
                   <h3 className="text-2xl font-inter font-semibold text-white">
                     Still Have <br />Questions?
                   </h3>
-                  <button className="absolute bottom-0 right-0 rounded-md bg-[#FEC42D] px-10 py-4 font-inter font-medium text-[#2D2D2D] transition-colors hover:scale-105">
+                  <button className="absolute bottom-0 right-0 rounded-tl-md rounded-br-md bg-[#FEC42D] px-10 py-4 font-inter font-medium text-[#2D2D2D] transition-colors hover:scale-105">
                     CONTACT US
                   </button>
                 </div>

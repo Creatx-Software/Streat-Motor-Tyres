@@ -13,6 +13,7 @@ export function BookingForm() {
     urgencyLevel: ''
   });
   const [isLocating, setIsLocating] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const getFormattedLocation = (data: any) => {
     const parts = [
@@ -74,6 +75,7 @@ export function BookingForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     try {
       const response = await fetch('/api/send-enquiry', {
@@ -113,6 +115,8 @@ export function BookingForm() {
     } catch (error) {
       console.error('Error submitting form:', error);
       alert('Sorry, there was an error submitting your request. Please try again or call us directly.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
   const handleChange = (
@@ -126,7 +130,7 @@ export function BookingForm() {
     });
   };
   return (
-    <section className="relative -mt-px pb-48 px-4 bg-[url('/assets/FormBg.webp')] bg-cover bg-center bg-no-repeat">
+    <section id="contact" className="relative -mt-px pb-48 px-4 bg-[url('/assets/FormBg.webp')] bg-cover bg-center bg-no-repeat">
       <div className="mx-auto w-full md:w-[48rem]">
         <div className="w-full bg-white rounded-2xl shadow-2xl p-8 sm:p-10 lg:p-12 translate-y-16">
           <h2 className="text-xl sm:text-2xl font-inter font-semibold text-center mb-2 text-[#8B16CC]">
@@ -304,9 +308,35 @@ export function BookingForm() {
 
             <button
               type="submit"
-              className="w-full bg-[#FFD10F] text-[#1C1C1E] font-inter font-bold py-4 rounded-lg hover:bg-yellow-500 transition-colors text-lg shadow-lg translate-y-3">
-              
-              Get Help Now
+              disabled={isSubmitting}
+              className="w-full bg-[#FFD10F] text-[#1C1C1E] font-inter font-bold py-4 rounded-lg hover:bg-yellow-500 transition-colors text-lg shadow-lg translate-y-3 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+              {isSubmitting ? (
+                <>
+                  <svg
+                    className="animate-spin h-5 w-5 text-[#1C1C1E]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  <span>Sending...</span>
+                </>
+              ) : (
+                'Get Help Now'
+              )}
             </button>
           </form>
         </div>

@@ -9,6 +9,7 @@ export function Testimonials() {
   const trackRef = React.useRef<HTMLDivElement | null>(null);
   const firstCardRef = React.useRef<HTMLDivElement | null>(null);
   const [stepWidth, setStepWidth] = React.useState(0);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
 
   const reviews = [
   {
@@ -80,6 +81,7 @@ export function Testimonials() {
 
     const runCarousel = async () => {
       controls.set({ x: 0 });
+      setCurrentIndex(0);
       let nextIndex = 1;
 
       while (isMounted) {
@@ -91,6 +93,8 @@ export function Testimonials() {
           }
         });
 
+        setCurrentIndex(nextIndex);
+
         await new Promise<void>((resolve) => {
           window.setTimeout(resolve, pauseMs);
         });
@@ -101,6 +105,7 @@ export function Testimonials() {
 
         if (nextIndex >= reviews.length) {
           controls.set({ x: 0 });
+          setCurrentIndex(0);
           nextIndex = 1;
           continue;
         }
@@ -144,7 +149,7 @@ export function Testimonials() {
               key={`${review.name}-${index}`}
               ref={index === 0 ? firstCardRef : null}
               className="relative flex-none basis-full overflow-hidden rounded-3xl bg-white p-6 pb-16 pr-20 shadow-lg transition-shadow hover:shadow-2xl sm:basis-[calc((100%-1.5rem)/2)] lg:basis-[calc((100%-4.5rem)/4)]">
-            
+
               <div className="flex gap-1 mb-4">
                 {[...Array(review.rating)].map((_, i) =>
               <StarIcon
@@ -162,7 +167,7 @@ export function Testimonials() {
                 src={review.image}
                 alt={review.name}
                 className="w-12 h-12 rounded-full object-cover" />
-              
+
                 <div>
                   <p className="font-inter font-semibold text-[#3B3B3B]">{review.name}</p>
                   <p className="text-xs text-[#FFB235] font-inter font-semibold">Clients</p>
@@ -177,6 +182,31 @@ export function Testimonials() {
             </div>
           )}
           </motion.div>
+        </div>
+
+        {/* Navigation Dots */}
+        <div className="flex justify-center gap-2 mt-8">
+          {reviews.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                controls.start({
+                  x: -index * stepWidth,
+                  transition: {
+                    duration: 0.5,
+                    ease: [0.22, 1, 0.36, 1]
+                  }
+                });
+                setCurrentIndex(index);
+              }}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                currentIndex === index
+                  ? 'w-8 bg-white'
+                  : 'w-2 bg-white/40 hover:bg-white/60'
+              }`}
+              aria-label={`Go to testimonial ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
       </div>

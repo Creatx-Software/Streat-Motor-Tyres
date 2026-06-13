@@ -3,9 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MenuIcon, XIcon } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,30 +38,30 @@ export function Navbar() {
           </div>
 
           <div className="hidden lg:flex flex-1 items-center justify-start space-x-12">
-            <a
-              href="#services"
+            <Link
+              href={isHomePage ? "#services" : "/#services"}
               className="hover:text-yellow-400 transition-colors font-semibold">
-              
+
               SERVICES
-            </a>
-            <a
-              href="#buy-tyres"
+            </Link>
+            <Link
+              href={isHomePage ? "#tyre-guide" : "/#tyre-guide"}
               className="hover:text-yellow-400 transition-colors font-semibold">
-              
+
               SIZE GUIDE
-            </a>
-            <a
-              href="#reviews"
+            </Link>
+            <Link
+              href={isHomePage ? "#reviews" : "/#reviews"}
               className="hover:text-yellow-400 transition-colors font-semibold">
-              
+
               WHY US
-            </a>
-            <a
-              href="#gallery"
+            </Link>
+            <Link
+              href={isHomePage ? "#gallery" : "/#gallery"}
               className="hover:text-yellow-400 transition-colors font-semibold">
-              
+
               GALLERY
-            </a>
+            </Link>
           </div>
 
           <div className="hidden lg:block ml-auto">
@@ -117,16 +121,20 @@ export function Navbar() {
               }}
             >
               {["SERVICES", "SIZE GUIDE", "WHY US", "GALLERY"].map((label, index) => {
-              const hrefs = ['#services', '#buy-tyres', '#reviews', '#gallery'];
+              const hrefs = ['#services', '#tyre-guide', '#reviews', '#gallery'];
+              const href = isHomePage ? hrefs[index] : `/${hrefs[index]}`;
               return (
-                <motion.a
+                <motion.div
                   key={label}
-                  href={hrefs[index]}
-                  className="block py-2 hover:text-yellow-400"
                   variants={{ hidden: { opacity: 0, y: -8 }, show: { opacity: 1, y: 0 } }}
                 >
-                  {label}
-                </motion.a>);
+                  <Link
+                    href={href}
+                    className="block py-2 hover:text-yellow-400"
+                  >
+                    {label}
+                  </Link>
+                </motion.div>);
 
             })}
               <motion.a

@@ -143,7 +143,17 @@ export function ServiceFeatures() {
                   </div>
                 </motion.article>
 
-                <motion.article custom={isLg} variants={rightCardVariants} className="group relative z-10 hover:z-20 mx-auto w-full max-w-[25rem]">
+                <motion.article
+                  custom={isLg}
+                  variants={rightCardVariants}
+                  className="group relative z-10 hover:z-20 mx-auto w-full max-w-[25rem] cursor-pointer"
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
+                >
                   <div className="relative overflow-hidden rounded-xl min-h-[300px] transform-gpu transition-transform duration-500 origin-center group-hover:scale-[1.02]">
                     <img
                       src="/assets/Replacement.webp"

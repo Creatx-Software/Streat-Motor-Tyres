@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import Link from 'next/link';
 import { Navbar } from '../../src/components/Navbar';
+import { Footer } from '../../src/components/Footer';
 
 const galleryImages = [
   '/assets/gallery1.webp',
@@ -12,11 +13,11 @@ const galleryImages = [
   '/assets/gallery3.webp',
   '/assets/gallery4.webp',
   '/assets/gallery5.webp',
-  '/assets/gallery1.webp',
-  '/assets/gallery2.webp',
-  '/assets/gallery3.webp',
-  '/assets/gallery4.webp',
-  '/assets/gallery5.webp',
+  // '/assets/gallery1.webp',
+  // '/assets/gallery2.webp',
+  // '/assets/gallery3.webp',
+  // '/assets/gallery4.webp',
+  // '/assets/gallery5.webp',
 ];
 
 const imageVariants: Variants = {
@@ -120,7 +121,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-[#191919] py-16 lg:py-24">
+      {/* <section className="bg-[#191919] py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
@@ -155,10 +156,10 @@ export default function GalleryPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
-      <section className="bg-white py-16 lg:py-24">
+      {/* <section className="bg-white py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -187,7 +188,7 @@ export default function GalleryPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Modal/Lightbox */}
       {selectedImage && selectedIndex !== null && (
@@ -334,6 +335,8 @@ export default function GalleryPage() {
           </div>
         </motion.div>
       )}
+
+      <Footer />
     </main>
   );
 }

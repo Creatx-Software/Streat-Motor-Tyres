@@ -15,10 +15,10 @@ export function Footer() {
   ];
 
   const socialLinks = [
-    { label: 'Facebook', href: '#', icon: FacebookIcon },
-    { label: 'TikTok', href: '#', icon: Music2Icon },
-    { label: 'X', href: '#', icon: XIcon },
-    { label: 'Instagram', href: '#', icon: InstagramIcon }
+    { label: 'Facebook', href: 'https://www.facebook.com/61579475364611/', icon: FacebookIcon },
+    { label: 'TikTok', href: 'https://www.tiktok.com/@streatmotortyres?_t=ZN-8ygKPNBAIGk&_r=1', icon: Music2Icon },
+    { label: 'X', href: 'https://x.com/SMotorTyres?t=2o3gpL9IxtCiozbiJryDuA&s=08', icon: XIcon },
+    { label: 'Instagram', href: 'https://www.instagram.com/streat_motor_tyres?igsh=MjhsN2JyaHJjMDIz', icon: InstagramIcon }
   ];
 
   return (
@@ -60,6 +60,8 @@ export function Footer() {
                   <a
                     key={item.label}
                     href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={item.label}
                     className="flex h-10 w-10 items-center justify-center text-[#DA96FF] transition-colors"
                   >
@@ -68,11 +70,18 @@ export function Footer() {
                 );
               })}
             </div>
-            <img
-              src="/logo-2.png.bv.webp"
-              alt="Logo"
-              className="h-12 w-auto -translate-y-4 scale-[0.9] md:scale-[1]"
-            />
+            <a
+              href="https://streatmotors.co.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit Streat Motors"
+            >
+              <img
+                src="/logo-2.png.bv.webp"
+                alt="Logo"
+                className="h-12 w-auto -translate-y-4 scale-[0.9] md:scale-[1] cursor-pointer hover:opacity-80 transition-opacity"
+              />
+            </a>
           </div>
         </div>
 

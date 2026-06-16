@@ -4,6 +4,7 @@ import React from 'react';
 import { Circle, PhoneIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
+import Link from 'next/link';
 
 const heroContentVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -89,13 +90,15 @@ export function HeroSection() {
 
             <div className="relative top-0 sm:top-3 lg:top-4 inline-block">
               <motion.div variants={heroItemVariants} className="grid grid-cols-2 gap-4 pt-4 translate-y-8 justify-center lg:justify-start">
-                <button className="w-full bg-[#8B16CC] text-white px-4 sm:px-8 py-3 rounded-md font-inter font-semibold text-sm sm:text-lg hover:bg-purple-800 transition-colors shadow-lg">
-                  Get Instant Help
-                </button>
+                <Link href="#contact">
+                  <button className="w-full bg-[#8B16CC] text-white px-4 sm:px-8 py-3 rounded-md font-inter font-semibold text-sm sm:text-lg hover:bg-purple-800 transition-colors shadow-lg">
+                    Get Instant Help
+                  </button>
+                </Link>
                 <a
-                  href=""
+                  href="tel:07960902731"
                   className="w-full bg-[#FFD10F] text-black px-4 sm:px-8 py-3 rounded-md font-inter font-semibold text-sm sm:text-lg hover:bg-yellow-500 transition-colors shadow-lg flex items-center justify-center gap-2">
-                
+
                   <PhoneIcon size={20} />
                   07960 902731
                 </a>

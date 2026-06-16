@@ -65,17 +65,17 @@ export async function POST(request: NextRequest) {
       urgency_level: urgency_level || 'Not specified',
     };
 
-    // Send email to admin (tyres@streatmotortyres.co.uk)
+    // Send email to admin (tyres@streatmotors.co.uk)
     const adminMailOptions = {
-      from: process.env.SMTP_FROM || 'tyres@streatmotortyres.co.uk',
-      to: 'tyres@streatmotortyres.co.uk',
+      from: process.env.SMTP_FROM || 'tyres@streatmotors.co.uk',
+      to: 'tyres@streatmotors.co.uk',
       subject: `New Tyre Enquiry from ${name}`,
       html: getAdminNotificationTemplate(formData),
     };
 
     // Send confirmation email to customer
     const customerMailOptions = {
-      from: process.env.SMTP_FROM || 'tyres@streatmotortyres.co.uk',
+      from: process.env.SMTP_FROM || 'tyres@streatmotors.co.uk',
       to: email,
       subject: 'Thank you for contacting Streat Motor Tyres',
       html: getCustomerConfirmationTemplate(),

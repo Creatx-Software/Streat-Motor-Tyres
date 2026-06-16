@@ -1,4 +1,4 @@
-name: Deploy to dev.streatmotortyres.co.uk
+name: Deploy to streatmotortyres.co.uk
 
 on:
   push:
@@ -7,8 +7,15 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: deploy-smt-dev
+  group: deploy-smt-prod
   cancel-in-progress: false
+
+# Non-secret server paths (the cPanel Node.js app for the main domain).
+# Only the SSH connection details live in repo secrets.
+env:
+  APP_ROOT: streatmotortyres
+  DEPLOY_PATH: /home/streqtjv/streatmotortyres
+  NODEVENV_ACTIVATE: /home/streqtjv/nodevenv/streatmotortyres/20/bin/activate
 
 jobs:
   deploy:
@@ -52,7 +59,7 @@ jobs:
             --exclude 'stderr.log' \
             --exclude '.well-known' \
             --exclude 'cgi-bin' \
-            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
+            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ env.DEPLOY_PATH }}/
 
       - name: Install prod deps & restart Passenger
         run: |
@@ -60,14 +67,14 @@ jobs:
               -p ${{ secrets.SSH_PORT }} \
               -o StrictHostKeyChecking=no \
               ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-              "bash -s" << 'EOF'
+              "bash -s" << EOF
           set -e
-          source ~/nodevenv/dev.streatmotortyres.co.uk/20/bin/activate
-          cd "${{ secrets.DEPLOY_PATH }}"
+          source ${{ env.NODEVENV_ACTIVATE }}
+          cd "${{ env.DEPLOY_PATH }}"
           echo "==> Installing production dependencies"
           npm ci
           echo "==> Restarting Passenger app"
-          cloudlinux-selector restart --json --interpreter nodejs --app-root dev.streatmotortyres.co.uk
+          cloudlinux-selector restart --json --interpreter nodejs --app-root ${{ env.APP_ROOT }}
           echo "==> Deployment complete"
           EOF
 

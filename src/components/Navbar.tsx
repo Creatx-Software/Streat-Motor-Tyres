@@ -8,6 +8,7 @@ import Link from 'next/link';
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
   const pathname = usePathname();
   const isHomePage = pathname === '/';
 
@@ -23,6 +24,56 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isHomePage) {
+      setActiveSection('');
+      return;
+    }
+
+    const sections = ['services', 'tyre-guide', 'reviews', 'gallery', 'faq', 'contact'];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0
+      }
+    );
+
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    // Set home as active if at the top
+    const handleTopScroll = () => {
+      if (window.scrollY < 100) {
+        setActiveSection('home');
+      }
+    };
+
+    window.addEventListener('scroll', handleTopScroll);
+    handleTopScroll();
+
+    return () => {
+      sections.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+      window.removeEventListener('scroll', handleTopScroll);
+    };
+  }, [isHomePage]);
   return (
     <nav className={`sticky top-0 z-50 text-white transition-all duration-300 ${
       isScrolled ? 'bg-[#000000]' : 'bg-transparent'
@@ -30,35 +81,54 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-28 gap-16">
           <div className="flex-shrink-0">
-            <img
-              src="/Logo-23851.svg"
-              alt="Streat Motor Tyres"
-              className="h-16 w-auto lg:scale-[1.1]" />
-            
+            <Link href="/">
+              <img
+                src="/Logo-23851.svg"
+                alt="Streat Motor Tyres"
+                className="h-16 w-auto lg:scale-[1.1] cursor-pointer hover:opacity-80 transition-opacity" />
+            </Link>
           </div>
 
           <div className="hidden lg:flex flex-1 items-center justify-start space-x-12">
             <Link
+              href="/"
+              className={`hover:text-yellow-400 transition-colors font-semibold ${
+                (pathname === '/' && activeSection === 'home') || (pathname === '/' && !activeSection)
+                  ? 'text-yellow-400'
+                  : ''
+              }`}>
+
+              HOME
+            </Link>
+            <Link
               href={isHomePage ? "#services" : "/#services"}
-              className="hover:text-yellow-400 transition-colors font-semibold">
+              className={`hover:text-yellow-400 transition-colors font-semibold ${
+                activeSection === 'services' ? 'text-yellow-400' : ''
+              }`}>
 
               SERVICES
             </Link>
             <Link
               href={isHomePage ? "#tyre-guide" : "/#tyre-guide"}
-              className="hover:text-yellow-400 transition-colors font-semibold">
+              className={`hover:text-yellow-400 transition-colors font-semibold ${
+                activeSection === 'tyre-guide' ? 'text-yellow-400' : ''
+              }`}>
 
               SIZE GUIDE
             </Link>
             <Link
               href={isHomePage ? "#reviews" : "/#reviews"}
-              className="hover:text-yellow-400 transition-colors font-semibold">
+              className={`hover:text-yellow-400 transition-colors font-semibold ${
+                activeSection === 'reviews' ? 'text-yellow-400' : ''
+              }`}>
 
               WHY US
             </Link>
             <Link
               href={isHomePage ? "#gallery" : "/#gallery"}
-              className="hover:text-yellow-400 transition-colors font-semibold">
+              className={`hover:text-yellow-400 transition-colors font-semibold ${
+                activeSection === 'gallery' ? 'text-yellow-400' : ''
+              }`}>
 
               GALLERY
             </Link>
@@ -120,9 +190,12 @@ export function Navbar() {
                 }
               }}
             >
-              {["SERVICES", "SIZE GUIDE", "WHY US", "GALLERY"].map((label, index) => {
-              const hrefs = ['#services', '#tyre-guide', '#reviews', '#gallery'];
-              const href = isHomePage ? hrefs[index] : `/${hrefs[index]}`;
+              {["HOME", "SERVICES", "SIZE GUIDE", "WHY US", "GALLERY"].map((label, index) => {
+              const hrefs = ['/', '#services', '#tyre-guide', '#reviews', '#gallery'];
+              const sectionIds = ['home', 'services', 'tyre-guide', 'reviews', 'gallery'];
+              const href = label === "HOME" ? "/" : (isHomePage ? hrefs[index] : `/${hrefs[index]}`);
+              const isActive = activeSection === sectionIds[index] ||
+                               (label === "HOME" && pathname === '/' && (!activeSection || activeSection === 'home'));
               return (
                 <motion.div
                   key={label}
@@ -130,7 +203,9 @@ export function Navbar() {
                 >
                   <Link
                     href={href}
-                    className="block py-2 hover:text-yellow-400"
+                    className={`block py-2 hover:text-yellow-400 transition-colors ${
+                      isActive ? 'text-yellow-400' : ''
+                    }`}
                   >
                     {label}
                   </Link>

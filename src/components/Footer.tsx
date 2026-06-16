@@ -46,7 +46,7 @@ export function Footer() {
                 )}
               </nav>
               <p className="text-md font-inter text-[#FEC42D]">
-                tyres@streatmotors.co.uk | 07960 902731
+                tyres@streatmotortyres.co.uk | 07960 902731
               </p>
             </div>
           </div>
